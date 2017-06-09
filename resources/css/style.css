@@ -1,0 +1,402 @@
+/**********************************************************
+** green: #47D7B1
+**********************************************************/
+
+/**********************************************************
+** Basic
+**********************************************************/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    background-image: url(img/background.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+    overflow: hidden;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    font-size: 18px;
+    text-rendering: optimizeLegibility;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+}
+
+/**********************************************************
+** Reusable Components
+**********************************************************/
+
+h1 {
+    display: inline-block;
+    font-size: 85%;
+    font-weight: 100;
+    color: #fff;
+}
+
+.title, .artist {
+    color: #fff;
+    font-weight: 100;
+}
+
+.title {
+    font-size: 95%;
+    margin-bottom: 12px;
+}
+
+.artist {
+    font-size: 70%
+}
+
+.current-time,
+.duration-time {
+    display: inline-block;
+    position: absolute;
+    font-size: 60%;
+}
+
+.current-time {
+    left: 5%;
+}
+
+.duration-time {
+    right: 5%;
+}
+
+/*------------ Buttons -----------*/
+.btn {
+    background-color: transparent;
+    outline: none;
+    border: 0;
+    cursor: pointer;
+    -webkit-transition: color 0.3s ease-in-out;
+    transition: color 0.3s ease-in-out;
+}
+
+.btn:hover i {
+    color: #47D7B1;
+}
+
+.btn:first-child {
+    margin-right: 24px;
+}
+
+.btn:last-child {
+    margin-left: 24px;
+}
+
+.btn i {
+    font-size: 220%;
+    color: #fff;
+}
+
+#btn-play i {
+    padding-left: 8px;
+}
+
+#btn-volume {
+    padding: 0;
+    float: right;
+    margin-right: 18px;
+}
+
+
+/*------------ Input -----------*/
+#volume-slider {
+    height: 10px;
+    width: 0px;
+    position: absolute;
+    -webkit-transform: rotate(-90deg);
+    transform: rotate(-90deg);
+    border-radius: 6px;
+    top: 75%;
+    right: -8%;
+    cursor: pointer;
+    opacity: 1;
+    display: none;
+    -webkit-transition: all 1s 0.4s ease-in-out;
+    transition: all 1s 0.4s ease-in-out;
+}
+
+#volume-slider.show {
+    display: block;
+    opacity: 1;
+    width: 100px;
+}
+
+/**********************************************************
+** Mobile Container
+**********************************************************/
+.container-mobile {
+    width: 365px;
+    height: 710px;
+    -ms-flex-item-align: center;
+    -ms-grid-row-align: center;
+    align-self: center;
+    margin-top: -20px;
+    position: relative;
+}
+
+/**********************************************************
+** iPhone Box
+**********************************************************/
+.iphone-box img {
+    width: 100%;
+    height: 100%;
+}
+
+/**********************************************************
+** Content
+**********************************************************/
+.content {
+    width: 312px;
+    height: 550px;
+    position: absolute;
+    top: 51.5%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    border-radius: 4px;
+    background-image: url(img/background-iphone.png);
+    overflow: hidden;
+}
+
+
+/**********************************************************
+** Header
+**********************************************************/
+header {
+    width: 100%;
+    height: 70px;
+}
+
+.text-box,
+.song-info{
+    text-align: center;
+}
+
+/*------------ Status Bar -----------*/
+.status-bar {
+    width: 100%;
+    padding: 2px 8px;
+}
+
+.status-bar img {
+    width: 100%;
+}
+
+/*------------ Text Box -----------*/
+.text-box {
+    position: relative;
+    margin-top: 6px;
+}
+
+.menu {
+    width: 8%;
+    vertical-align: middle;
+    line-height: 120%;
+    margin-top: 12px;
+    position: absolute;
+    right: 5%;
+}
+
+/*------------ Cover -----------*/
+.cover {
+    width: 240px;
+    border-radius: 8px;
+    margin: 25px auto;
+    -webkit-transform: translateX(0%);
+    transform: translateX(0%);
+    -webkit-transition: all 0.3s;
+    transition: all 0.3s;
+}
+
+.cover img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+/*------------ Player Buttons -----------*/
+.player-buttons {
+    text-align: center;
+    margin-top: 25px
+}
+
+/*------------ Song TimeLine -----------*/
+.song-timeline {
+    margin-top: 10px;
+    position: relative;
+    top: 18px;
+    color: #fff;
+}
+
+.song-time {
+    width: 210px;
+    height: 6px;
+    border-radius: 6px;
+    margin: 0 auto;
+    position: relative;
+    top: 10px;
+    background-color: #fff;
+}
+
+.song-time span {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 6px;
+    border-radius: 6px;
+    background-color: #47D7B1;
+    width: 0px;
+}
+
+/**********************************************************
+** Animations
+**********************************************************/
+.animation {
+    -webkit-animation: next 0.8s ease-in-out alternate forwards;
+    animation: next 0.8s ease-in-out alternate forwards;
+}
+
+.animationPrevious {
+    -webkit-animation: prev 0.8s ease-in-out alternate forwards;
+    animation: prev 0.8s ease-in-out alternate forwards;
+}
+
+@-webkit-keyframes next {
+    100%, 0% {
+        -webkit-transform: translateX(0%);
+        transform: translateX(0%);
+        opacity: 1;
+    }
+    
+    45% {
+        -webkit-transform: translateX(-140%);
+        transform: translateX(-140%);
+        opacity: 1;
+    }
+    
+    55% {
+        -webkit-transform: translateX(-140%);
+        transform: translateX(-140%);
+        opacity: 0;
+    }
+    
+    65% {
+        -webkit-transform: translateX(120%);
+        transform: translateX(120%);
+        opacity: 0;
+    }
+    
+}
+
+@keyframes next {
+    100%, 0% {
+        -webkit-transform: translateX(0%);
+        transform: translateX(0%);
+        opacity: 1;
+    }
+    
+    45% {
+        -webkit-transform: translateX(-140%);
+        transform: translateX(-140%);
+        opacity: 1;
+    }
+    
+    55% {
+        -webkit-transform: translateX(-140%);
+        transform: translateX(-140%);
+        opacity: 0;
+    }
+    
+    65% {
+        -webkit-transform: translateX(120%);
+        transform: translateX(120%);
+        opacity: 0;
+    }
+    
+}
+
+@-webkit-keyframes prev {
+    100%, 0% {
+        -webkit-transform: translateX(0%);
+        transform: translateX(0%);
+        opacity: 1;
+    }
+    
+    45% {
+        -webkit-transform: translateX(140%);
+        transform: translateX(140%);
+        opacity: 1;
+    }
+    
+    55% {
+        -webkit-transform: translateX(140%);
+        transform: translateX(140%);
+        opacity: 0;
+    }
+    
+    65% {
+        -webkit-transform: translateX(-120%);
+        transform: translateX(-120%);
+        opacity: 0;
+    }
+    
+}
+
+@keyframes prev {
+    100%, 0% {
+        -webkit-transform: translateX(0%);
+        transform: translateX(0%);
+        opacity: 1;
+    }
+    
+    45% {
+        -webkit-transform: translateX(140%);
+        transform: translateX(140%);
+        opacity: 1;
+    }
+    
+    55% {
+        -webkit-transform: translateX(140%);
+        transform: translateX(140%);
+        opacity: 0;
+    }
+    
+    65% {
+        -webkit-transform: translateX(-120%);
+        transform: translateX(-120%);
+        opacity: 0;
+    }
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

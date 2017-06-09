@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Karol Kozer">
+    <title>Timbre Music App</title>
+    <!-- Normalize CSS -->
+    <link rel="stylesheet" href="vendors/css/normalize.css">
+    <!-- IonIcons CSS -->
+    <link rel="stylesheet" href="vendors/css/ionicons.min.css">
+    <!-- My CSS -->
+    <link rel="stylesheet" href="resources/css/style.css">
+    <!-- Roboto Font -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
+</head>
+
+<body>
+   
+   <div class="container-mobile">
+      
+       <div class="iphone-box">
+           <img src="resources/img/iphone.png" alt="iPhone">
+       </div>
+       
+       <div class="content">
+           <header>
+               <div class="status-bar">
+                   <img src="resources/img/status-bar.png" alt="Status Bar">
+               </div>
+               
+               <div class="text-box">
+                   <h1>Timbre</h1>
+                   
+                    <img src="resources/img/menu.png" alt="Menu" class="menu">
+                   
+               </div>
+            </header>
+               
+           <div class="cover">
+               <img src="resources/img/cover-scared.jpg" alt="Cover Scared" id="song-cover">
+           </div>
+
+           <div class="song-info">
+               <p class="title">Scared To Be Lonely (Remix)</p>
+               <p class="artist">Martin Garrix</p>
+           </div>
+
+           <div class="player-buttons">
+               <button class="btn" id="btn-prev"><i class="ion-ios-rewind"></i></button>
+               <button class="btn" id="btn-play"><i class="ion-ios-play"></i></button>
+               <button class="btn" id="btn-next"><i class="ion-ios-fastforward"></i></button>
+           </div>
+
+           <input type="range" min="0" max="1" step="any" value="0.5" id="volume-slider">
+
+           <button class="btn" id="btn-volume">
+               <img src="resources/img/volume-icon.png" alt="Volume icon">
+           </button>
+
+           <div class="song-timeline">
+
+               <div class="song-time">
+                   <span></span>
+               </div>
+
+               <p class="current-time">00:00</p>
+               <p class="duration-time">00:00</p>
+           </div>
+               
+       </div>
+       
+   </div>
+   
+   <audio src="http://audio.itunes.apple.com/apple-assets-us-std-000001/AudioPreview71/v4/18/2a/e0/182ae0de-17e4-58f2-ead2-38e0573f6822/mzaf_6022066148953060811.plus.aac.p.m4a" id="music"></audio>
+   
+    <script src="resources/js/script.js"></script>
+</body>
+</html>
